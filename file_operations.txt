@@ -1,0 +1,5 @@
+What Is Docker?
+Docker is the world’s leading software 
+containerization platform. 
+Docker is a tool designed to make it
+ easier to deploy and run applications by using containers. Containers allow a developer to package upon applications with all of the parts it needs, such as libraries and other dependencies, and ship it all out as one package.
