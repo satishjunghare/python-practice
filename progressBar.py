@@ -2,34 +2,29 @@ import time
 import sys
 import click
 
+def roomsImport():
+    time.sleep(1)
+    yield 30
+
+    time.sleep(1)
+    yield 70
+
+    time.sleep(1)
+    yield 100
+
 def hotelImport():
     time.sleep(1)
     yield 10
-    
-    time.sleep(1)
-    yield 20
-    
-    time.sleep(1)
-    yield 30
-    
+
     time.sleep(1)
     yield 40
-    
+
     time.sleep(1)
     yield 50
-    
-    time.sleep(1)
-    yield 60
-    
-    time.sleep(1)
-    yield 70
-    
+
     time.sleep(1)
     yield 80
-    
-    time.sleep(1)
-    yield 90
-    
+
     time.sleep(1)
     yield 100
 
@@ -51,16 +46,21 @@ def progress_bar(iteration, total, prefix='', suffix='', length=30, fill='█', 
     bar = fill * filled_length + '-' * (length - filled_length)
     print(f'\r{prefix} |{bar}| {percent}% {suffix}', end=print_end)
     
-# Example usage
-for i in hotelImport():
-    progress_bar(i, 100, prefix='Syncing Vervotech Hotels:', suffix='Complete')
+processes = [{"fun": "roomsImport", "prefix":"Importing rooms"}, {"fun": "hotelImport", "prefix":"Importing hotels"}]
 
-# Add a newline after the progress bar is complete
-print()
+inputTxt = input("Do you want to import data?(y/n):")
+if inputTxt == "y":
+    print("Proceed to import data")
+else:
+    print("Exiting...")
+    sys.exit()
 
-for i in hotelImport():
-    progress_bar(i, 100, prefix='Syncing Vervotech Room:', suffix='Complete')
+for process in processes:
+    funName = process['fun']
+    callFuntion = globals()[funName]
 
-print()
+    for i in callFuntion():
+        progress_bar(i, 100, prefix= process['prefix'] + ':', suffix='Complete')
+    print()
 
 print("Syncing Complete!")
