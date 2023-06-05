@@ -1,1 +1,3 @@
-designation = "Software Developer"
+import config
+
+config.name = "Dinesh"

@@ -4,4 +4,4 @@ def divide(a,b):
     except Exception as e:
         return e
 
-print(divide(10,0))
+print(divide(10,2))
