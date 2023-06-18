@@ -1,0 +1,8 @@
+name: python-practice-repo-actions
+run-name: ${{ github.actor }} is making changes
+on: push
+jobs:
+    check-bats-version:
+        runs-on: ubuntu-latest
+        steps:
+            - run: npm -v
